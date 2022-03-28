@@ -1,29 +1,26 @@
-import React, { FC, InputHTMLAttributes } from "react";
+import { useState } from "react";
+import './Input.css';
+import initialState from "./state";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  label: string;
-}
+function Input () {
+  
+  const [input, setInput] = useState(initialState);
 
-const Input: FC<InputProps> = ({ name, label }) => {
-  return (
-    // const handleChange
-    <div className="input-wrapper">
-      <input
-        type="text"
-        // value={handleChange}
-      />
-      <input
-        type="radio"
-      />
-      <input
-        type="radio"
-      />
-      <input
-        type="radio"
-      />
+  const handleChange = (event: { target: { value: string; }; }) => setInput({search: event.target.value});
+
+    return (
+    <div className='inputWrapper'>  
+      <div className="Search">
+        <input
+          placeholder="Search..."
+          type="search"
+          className="inputSearch"
+          value={input.search}
+          onChange={handleChange}
+        />
+      </div>
     </div>
-  );
-};
+   )
+}
 
 export default Input;

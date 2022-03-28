@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: #fec64f; */
 }
 
 code {
@@ -38,12 +39,7 @@ code {
   align-items: center;
 }
 .AddToCard-btn {
-  background-image: linear-gradient(
-    92.88deg,
-    #455eb5 9.16%,
-    #5643cc 43.89%,
-    #673fd7 64.72%
-  );
+  background: #425eab;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -60,9 +56,9 @@ code {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.AddToCard-btn :hover {
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-  transition-duration: 0.1s;
+.AddToCard-btn:hover {
+  background: #152e6f;
+  transition-duration: 0.2s;
 }
 .N-A {
   color: red;

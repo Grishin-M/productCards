@@ -1,4 +1,4 @@
-import { Key } from 'react';
+import { useState } from 'react';
 import { Card } from './Card'
 
 function Cards (props: { cards: any; }) {
@@ -6,10 +6,18 @@ function Cards (props: { cards: any; }) {
 
   return (
     <div className="cards">
-      {cards.map((card: (JSX.IntrinsicAttributes & { id: string; brand: string; retailPrice: number; shoe: string; media: { imageUrl: any; }; })) => (
+      {
+        cards
+          .map(
+            (card: { id: string; brand: string; retailPrice: number; shoe: string; media: { imageUrl: any; }; }) =>
+            (<Card key={ card.id } {...card}/>)
+          )
+      }
+      {/* {cards.map((card: (JSX.IntrinsicAttributes & { id: string; brand: string; retailPrice: number; shoe: string; media: { imageUrl: any; }; })) => (
          <Card key={ card.id } {...card} />
-      ))}
+      )).slice(0,9)} */}
     </div>
   )
 }
 export { Cards }
+
