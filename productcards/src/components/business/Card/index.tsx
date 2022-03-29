@@ -24,7 +24,6 @@ function Card(props: {
         <img src={imageUrl} className="product-img" alt="product-img" />
       </div>
       <div className="card-content">
-        <p className="card-title">{brand}</p>
         <p className="card-title">{shoe}</p>
         <div className="AddToCard">
           {retailPrice === 0 ? (

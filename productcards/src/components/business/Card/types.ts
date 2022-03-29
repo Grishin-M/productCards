@@ -15,7 +15,3 @@ export type Card = {
 export type Media = {
   imageUrl: string;
 };
-
-export type Rating = {
-  rating: number;
-};

@@ -6,8 +6,10 @@ function Pagination({
   handleGoPrevPage,
   hanldeGoNextPage,
 }: Props): ReactElement<Props> {
+  // isDisabledNext
+  // isDisabledPrev
   return (
-    <div className="pagination">
+    <div>
       <Button onClick={handleGoPrevPage}>Prev</Button>
       <Button onClick={hanldeGoNextPage}>Next</Button>
     </div>

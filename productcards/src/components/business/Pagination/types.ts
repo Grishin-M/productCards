@@ -1,5 +1,4 @@
 export type Props = {
-  onClick?: () => void;
-  handleGoPrevPage?: () => void;
-  hanldeGoNextPage?: () => void;
+  handleGoPrevPage: () => void;
+  hanldeGoNextPage: () => void;
 };
