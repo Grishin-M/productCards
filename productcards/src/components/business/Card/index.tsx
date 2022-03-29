@@ -1,6 +1,3 @@
-// import { useContext } from "react";
-// import { AppContext } from "../contexts";
-
 function Card(props: {
   id: string;
   brand: string;
@@ -15,8 +12,6 @@ function Card(props: {
     shoe,
     media: { imageUrl },
   } = props;
-
-  // const { pagination } = useContext(AppContext);
 
   return (
     <div id={id} className="product-card">

@@ -10,26 +10,34 @@ export default function Main() {
   const [filterValue, setFilterValue] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const handleChange = (event: SyntheticEvent) => {
-    const target = event.target as HTMLInputElement;
+  const handleChange = useCallback((event: SyntheticEvent) => {
+    const target = event.target as HTMLInputElement; // type casting
     setFilterValue(target.value as string);
-  };
+  }, []);
 
   const filterCards = (filterdCards: Card[]) => {
     return filterdCards.filter((card: Card) =>
       card.shoe.toLowerCase().startsWith(filterValue.toLocaleLowerCase())
     );
   };
-
+  const TOTAL_PAGES = Math.ceil(cards.length / SHOES_PER_PAGE);
   const lastShoesIndex = currentPage * SHOES_PER_PAGE;
   const firstrShoesIndex = lastShoesIndex - SHOES_PER_PAGE;
   const currentShoes = cards.slice(firstrShoesIndex, lastShoesIndex);
 
-  const hanldeGoNextPage = () => {};
+  const hanldeGoNextPage = useCallback(() => {
+    // 10 страниц
+    // currentPage - текущая
+    if (currentPage >= TOTAL_PAGES) return;
+    setCurrentPage(currentPage + 1);
+  }, [currentPage, TOTAL_PAGES]);
 
-  const handleGoPrevPage = () => {
-    // logic
-  };
+  const handleGoPrevPage = useCallback(() => {
+    if (currentPage <= 1) return;
+    setCurrentPage(currentPage - 1);
+  }, [currentPage]);
+
+  console.log(currentPage, "=> текущая");
 
   useEffect(() => {
     const options = {
@@ -58,6 +66,8 @@ export default function Main() {
         <h3>Loading...</h3>
       )}
       <Pagination
+        currentPage={currentPage}
+        totalPages={TOTAL_PAGES}
         hanldeGoNextPage={hanldeGoNextPage}
         handleGoPrevPage={handleGoPrevPage}
       />
