@@ -1,7 +1,11 @@
 import { Card } from "../Card";
 
-function Cards(props: { cards: any; addToCardCounter: () => void }) {
-  const { cards, addToCardCounter } = props;
+function Cards(props: {
+  cards: any;
+  addToCardCounter: () => void;
+  letsOpenPopup: () => void;
+}) {
+  const { cards, addToCardCounter, letsOpenPopup } = props;
   return (
     <div className="cards">
       {cards.map(
@@ -12,7 +16,12 @@ function Cards(props: { cards: any; addToCardCounter: () => void }) {
           shoe: string;
           media: { imageUrl: any };
         }) => (
-          <Card key={card.id} {...card} addToCardCounter={addToCardCounter} />
+          <Card
+            key={card.id}
+            {...card}
+            addToCardCounter={addToCardCounter}
+            letsOpenPopup={letsOpenPopup}
+          />
         )
       )}
     </div>

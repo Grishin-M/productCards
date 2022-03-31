@@ -5,6 +5,7 @@ function Card(props: {
   shoe: string;
   media: { imageUrl: any };
   addToCardCounter: () => void;
+  letsOpenPopup: () => void;
 }) {
   const {
     id,
@@ -13,12 +14,18 @@ function Card(props: {
     shoe,
     media: { imageUrl },
     addToCardCounter,
+    letsOpenPopup,
   } = props;
 
   return (
     <div id={id} className="product-card">
       <div className="cards-image">
-        <img src={imageUrl} className="product-img" alt="product-img" />
+        <img
+          src={imageUrl}
+          className="product-img"
+          alt="product-img"
+          onClick={letsOpenPopup}
+        />
       </div>
       <div className="card-content">
         <p className="card-title">{shoe}</p>

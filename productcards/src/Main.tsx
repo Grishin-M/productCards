@@ -39,7 +39,6 @@ export default function Main() {
   const letsClosePopup = () => {
     setOpenPopup(false);
   };
-
   const addToCardCounter = useCallback(() => {
     setAddToCardItem(addToCardItem + 1);
   }, [addToCardItem]);
@@ -79,6 +78,7 @@ export default function Main() {
             )
             .slice(firstrShoesIndex, lastShoesIndex)}
           addToCardCounter={addToCardCounter}
+          letsOpenPopup={letsOpenPopup}
         />
       ) : (
         <Box sx={{ display: "flex", justifyContent: "center" }}>

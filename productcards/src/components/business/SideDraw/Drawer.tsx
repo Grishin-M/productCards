@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC, ReactElement } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -12,7 +12,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 
-export default function TemporaryDrawer({ addToCardItem }) {
+interface Props {
+  addToCardItem: number;
+}
+export default function TemporaryDrawer({
+  addToCardItem,
+}: Props): ReactElement<Props> {
   const [state, setState] = useState(false);
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -58,8 +63,12 @@ export default function TemporaryDrawer({ addToCardItem }) {
   return (
     <div>
       <IconButton aria-label="cart">
-        <StyledBadge badgeContent={addToCardItem} color="primary">
-          <ShoppingCartIcon onClick={toggleDrawer(true)} />
+        <StyledBadge
+          badgeContent={addToCardItem}
+          color="default"
+          onClick={toggleDrawer(true)}
+        >
+          <ShoppingCartIcon />
         </StyledBadge>
         <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
           {list()}

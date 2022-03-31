@@ -69,3 +69,21 @@ code {
   font-weight: bold;
   margin: 25px;
 }
+.css-1to51ap-MuiBadge-root .MuiBadge-badge {
+  right: 0 !important;
+  padding: 0 15px 0 0 !important;
+  width: 80px;
+  height: 50px; 
+  font-weight: bold;
+  font-size: 20px;
+  justify-content: right;
+}
+.css-fvc8ir-MuiBadge-badge {
+  border-radius: 50px !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  z-index: 2;
+}
+.product-img {
+  cursor: pointer;
+}
