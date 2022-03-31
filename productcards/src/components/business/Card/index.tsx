@@ -4,6 +4,7 @@ function Card(props: {
   retailPrice: number;
   shoe: string;
   media: { imageUrl: any };
+  addToCardCounter: () => void;
 }) {
   const {
     id,
@@ -11,6 +12,7 @@ function Card(props: {
     retailPrice,
     shoe,
     media: { imageUrl },
+    addToCardCounter,
   } = props;
 
   return (
@@ -26,7 +28,9 @@ function Card(props: {
           ) : (
             <span className="card-title">{retailPrice}$</span>
           )}
-          <button className="AddToCard-btn">Add to Card</button>
+          <button className="AddToCard-btn" onClick={addToCardCounter}>
+            Add to Card
+          </button>
         </div>
       </div>
     </div>

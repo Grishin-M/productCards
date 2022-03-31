@@ -4,30 +4,26 @@ import { Cards } from "./components/business/Cards";
 import Pagination from "./components/business/Pagination/Pagination";
 import Input from "./components/common/Input/input";
 import { SHOES_PER_PAGE } from "../src/consts/index";
+import { Box, CircularProgress } from "@mui/material";
+import CustomizedDialogs from "./components/business/Popup/Popup";
 
 export default function Main() {
   const [cards, setData] = useState([]);
   const [filterValue, setFilterValue] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [addToCardItem, setAddToCardItem] = useState<number>(0);
 
   const handleChange = useCallback((event: SyntheticEvent) => {
     const target = event.target as HTMLInputElement; // type casting
     setFilterValue(target.value as string);
   }, []);
 
-  const filterCards = (filterdCards: Card[]) => {
-    return filterdCards.filter((card: Card) =>
-      card.shoe.toLowerCase().startsWith(filterValue.toLocaleLowerCase())
-    );
-  };
   const TOTAL_PAGES = Math.ceil(cards.length / SHOES_PER_PAGE);
   const lastShoesIndex = currentPage * SHOES_PER_PAGE;
   const firstrShoesIndex = lastShoesIndex - SHOES_PER_PAGE;
-  const currentShoes = cards.slice(firstrShoesIndex, lastShoesIndex);
 
   const hanldeGoNextPage = useCallback(() => {
-    // 10 страниц
-    // currentPage - текущая
     if (currentPage >= TOTAL_PAGES) return;
     setCurrentPage(currentPage + 1);
   }, [currentPage, TOTAL_PAGES]);
@@ -37,7 +33,16 @@ export default function Main() {
     setCurrentPage(currentPage - 1);
   }, [currentPage]);
 
-  console.log(currentPage, "=> текущая");
+  const letsOpenPopup = () => {
+    setOpenPopup(true);
+  };
+  const letsClosePopup = () => {
+    setOpenPopup(false);
+  };
+
+  const addToCardCounter = useCallback(() => {
+    setAddToCardItem(addToCardItem + 1);
+  }, [addToCardItem]);
 
   useEffect(() => {
     const options = {
@@ -59,17 +64,37 @@ export default function Main() {
 
   return (
     <div className="Main">
-      <Input filterValue={filterValue} onChange={handleChange} />
+      <Input
+        filterValue={filterValue}
+        onChange={handleChange}
+        addToCardItem={addToCardItem}
+      />
       {cards.length ? (
-        <Cards cards={filterCards(currentShoes)} />
+        <Cards
+          cards={cards
+            .filter((card: Card) =>
+              card.shoe
+                .toLowerCase()
+                .startsWith(filterValue.toLocaleLowerCase())
+            )
+            .slice(firstrShoesIndex, lastShoesIndex)}
+          addToCardCounter={addToCardCounter}
+        />
       ) : (
-        <h3>Loading...</h3>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <CircularProgress />
+        </Box>
       )}
       <Pagination
         currentPage={currentPage}
         totalPages={TOTAL_PAGES}
         hanldeGoNextPage={hanldeGoNextPage}
         handleGoPrevPage={handleGoPrevPage}
+      />
+      <CustomizedDialogs
+        letsOpenPopup={letsOpenPopup}
+        letsClosePopup={letsClosePopup}
+        openPopup={openPopup}
       />
     </div>
   );

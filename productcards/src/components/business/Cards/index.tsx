@@ -1,7 +1,7 @@
 import { Card } from "../Card";
 
-function Cards(props: { cards: any }) {
-  const { cards } = props;
+function Cards(props: { cards: any; addToCardCounter: () => void }) {
+  const { cards, addToCardCounter } = props;
   return (
     <div className="cards">
       {cards.map(
@@ -12,7 +12,7 @@ function Cards(props: { cards: any }) {
           shoe: string;
           media: { imageUrl: any };
         }) => (
-          <Card key={card.id} {...card} />
+          <Card key={card.id} {...card} addToCardCounter={addToCardCounter} />
         )
       )}
     </div>

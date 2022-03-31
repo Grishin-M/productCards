@@ -21,7 +21,8 @@ code {
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 .cards-image img {
   width: 400px;
@@ -63,28 +64,8 @@ code {
 .N-A {
   color: red;
 }
-.pagination {
-  width: 300px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-.pagination button:hover {
-  background: #152e6f;
-  transition-duration: 0.2s;
-}
-.pagination button {
-  width: 100px;
-  height: 35px;
-  background: #425eab;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  flex-shrink: 0;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
-  text-shadow: rgb(0 0 0 / 25%) 0 3px 8px;
-  border: none;
+.pagiSpan {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 25px;
 }
