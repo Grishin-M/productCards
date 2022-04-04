@@ -1,4 +1,6 @@
-import { InitialAppState } from './types'
+import { AppAction, InitialAppState } from './types'
+
+function noop() {}
 
 export const initialState: InitialAppState = {
     cards: ['1','2'],
@@ -8,4 +10,6 @@ export const initialState: InitialAppState = {
         page: 1,
         size: 10
     },
+    cartItems: [],
+    dispatch: (state: InitialAppState, action: AppAction) => state,
 };

@@ -1,30 +1,20 @@
-import { Card } from "../Card";
+import Card from "../Card";
+import { TCard } from "../Card/types";
+import { CardsProps } from "./types";
 
-function Cards(props: {
-  cards: any;
-  addToCardCounter: () => void;
-  letsOpenPopup: () => void;
-}) {
-  const { cards, addToCardCounter, letsOpenPopup } = props;
+function Cards({ cards, letsOpenPopup}: CardsProps ) {
   return (
     <div className="cards">
       {cards.map(
-        (card: {
-          id: string;
-          brand: string;
-          retailPrice: number;
-          shoe: string;
-          media: { imageUrl: any };
-        }) => (
+        (card: TCard) => (
           <Card
             key={card.id}
-            {...card}
-            addToCardCounter={addToCardCounter}
-            letsOpenPopup={letsOpenPopup}
+            card={card}
+            onOpenPopup={letsOpenPopup}
           />
         )
       )}
     </div>
   );
 }
-export { Cards };
+export default Cards;

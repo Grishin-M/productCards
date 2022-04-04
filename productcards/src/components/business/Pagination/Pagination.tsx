@@ -9,7 +9,6 @@ function Pagination({
   currentPage,
   totalPages,
 }: Props): ReactElement<Props> {
-  console.log(totalPages, currentPage);
   const isDisabledNext = currentPage === totalPages;
   const isDisabledPrev = currentPage === 1;
   return (

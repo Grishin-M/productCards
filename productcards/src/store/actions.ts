@@ -1,2 +1,13 @@
-export const ACTION_1 = 'ACTION_1';
-export const ACTION_2 = 'ACTION_2';
+import { TCard } from "../components/business/Card/types";
+
+// Добавление
+export const ADD_TO_CART = (payload: TCard) => ({
+    type: 'ADD_TO_CART',
+    payload
+});
+
+// Удаление
+export const REMOVE_FROM_CART = (payload: number) => ({
+    type: 'REMOVE_FROM_CART',
+    payload,
+});

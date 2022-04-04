@@ -1,22 +1,19 @@
-import { ACTION_1, ACTION_2 } from "./actions";
-import { InitialAppState } from "./types";
+import { addHelper } from "./helper";
+import { AppAction, InitialAppState } from "./types";
 
-type AppAction = {
-  type: string;
-  // payload: T;
-};
-
+// редюсер
 export const reducer = (state: InitialAppState, action: AppAction) => {
   switch (action.type) {
-    case ACTION_1:
+    case 'ADD_TO_CART':
       return {
         ...state,
-        loading: true,
+        cartItems: addHelper(state.cartItems, action.payload)
       };
-    case ACTION_2:
+    case 'REMOVE_FROM_CART':
+      console.log('remove')
+      console.log(action.payload);
       return {
         ...state,
-        cards: [],
       };
     default:
         return state

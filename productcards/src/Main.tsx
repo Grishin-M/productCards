@@ -1,18 +1,18 @@
 import { useState, useEffect, SyntheticEvent, useCallback } from "react";
-import { Card } from "./components/business/Card/types";
-import { Cards } from "./components/business/Cards";
+import Cards from "./components/business/Cards";
 import Pagination from "./components/business/Pagination/Pagination";
 import Input from "./components/common/Input/input";
 import { SHOES_PER_PAGE } from "../src/consts/index";
 import { Box, CircularProgress } from "@mui/material";
 import CustomizedDialogs from "./components/business/Popup/Popup";
+import TemporaryDrawer from './components/business/SideDraw/Drawer';
+import { TCard } from "./components/business/Card/types";
 
 export default function Main() {
   const [cards, setData] = useState([]);
   const [filterValue, setFilterValue] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [openPopup, setOpenPopup] = useState(false);
-  const [addToCardItem, setAddToCardItem] = useState<number>(0);
 
   const handleChange = useCallback((event: SyntheticEvent) => {
     const target = event.target as HTMLInputElement; // type casting
@@ -33,15 +33,9 @@ export default function Main() {
     setCurrentPage(currentPage - 1);
   }, [currentPage]);
 
-  const letsOpenPopup = () => {
-    setOpenPopup(true);
-  };
-  const letsClosePopup = () => {
-    setOpenPopup(false);
-  };
-  const addToCardCounter = useCallback(() => {
-    setAddToCardItem(addToCardItem + 1);
-  }, [addToCardItem]);
+  const letsOpenPopup = () => setOpenPopup(true);
+
+  const letsClosePopup = () => setOpenPopup(false);
 
   useEffect(() => {
     const options = {
@@ -63,21 +57,22 @@ export default function Main() {
 
   return (
     <div className="Main">
-      <Input
-        filterValue={filterValue}
-        onChange={handleChange}
-        addToCardItem={addToCardItem}
-      />
+      <div className="main_wrapper">
+        <Input
+          filterValue={filterValue}
+          onChange={handleChange}
+        />
+        <TemporaryDrawer addToCardItem={2} />
+      </div>
       {cards.length ? (
         <Cards
           cards={cards
-            .filter((card: Card) =>
+            .filter((card: TCard) =>
               card.shoe
                 .toLowerCase()
                 .startsWith(filterValue.toLocaleLowerCase())
             )
             .slice(firstrShoesIndex, lastShoesIndex)}
-          addToCardCounter={addToCardCounter}
           letsOpenPopup={letsOpenPopup}
         />
       ) : (

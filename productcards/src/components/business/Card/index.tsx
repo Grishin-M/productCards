@@ -1,22 +1,11 @@
-function Card(props: {
-  id: string;
-  brand: string;
-  retailPrice: number;
-  shoe: string;
-  media: { imageUrl: any };
-  addToCardCounter: () => void;
-  letsOpenPopup: () => void;
-}) {
-  const {
-    id,
-    brand,
-    retailPrice,
-    shoe,
-    media: { imageUrl },
-    addToCardCounter,
-    letsOpenPopup,
-  } = props;
+import { useContext } from 'react';
+import { AppContext } from '../../../contexts';
+import { ADD_TO_CART } from '../../../store/actions';
+import { CardProps } from './types';
 
+function Card({ card, onOpenPopup }: CardProps) {
+  const { dispatch } = useContext(AppContext);
+  const { id, media: { imageUrl }, shoe, retailPrice } = card
   return (
     <div id={id} className="product-card">
       <div className="cards-image">
@@ -24,7 +13,7 @@ function Card(props: {
           src={imageUrl}
           className="product-img"
           alt="product-img"
-          onClick={letsOpenPopup}
+          onClick={onOpenPopup}
         />
       </div>
       <div className="card-content">
@@ -35,7 +24,10 @@ function Card(props: {
           ) : (
             <span className="card-title">{retailPrice}$</span>
           )}
-          <button className="AddToCard-btn" onClick={addToCardCounter}>
+          <button
+            className="AddToCard-btn"
+            onClick={() => dispatch(ADD_TO_CART(card))}
+          >
             Add to Card
           </button>
         </div>
@@ -44,4 +36,4 @@ function Card(props: {
   );
 }
 
-export { Card };
+export default Card;

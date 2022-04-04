@@ -1,4 +1,4 @@
-export type Card = {
+export type TCard = {
   brand: string;
   colorway: string;
   gender: string;
@@ -14,4 +14,9 @@ export type Card = {
 
 export type Media = {
   imageUrl: string;
+};
+
+export type CardProps = {
+  card: TCard;
+  onOpenPopup: () => void;
 };

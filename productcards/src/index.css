@@ -87,3 +87,13 @@ code {
 .product-img {
   cursor: pointer;
 }
+.main_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #425eab;
+  color: white !important;
+  padding: 5px;
+}

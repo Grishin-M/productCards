@@ -29,9 +29,9 @@
   box-sizing: border-box;
   border: none;
   font-size: 18px;
-  background: none;
   color: #000007;
-  border-bottom: 2px solid transparent;
+  border-bottom: none;
+  outline: none;
   caret-color: #000007;
   font-weight: bold;
 }

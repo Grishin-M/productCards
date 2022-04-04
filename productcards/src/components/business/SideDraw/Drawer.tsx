@@ -1,4 +1,8 @@
-import React, { useState, FC, ReactElement } from "react";
+import React, {
+  useState,
+  ReactElement,
+  useContext
+} from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -11,6 +15,8 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import CartItem from "../CartItem/";
+import { AppContext } from "../../../contexts";
 
 interface Props {
   addToCardItem: number;
@@ -19,6 +25,8 @@ export default function TemporaryDrawer({
   addToCardItem,
 }: Props): ReactElement<Props> {
   const [state, setState] = useState(false);
+  const { cartItems } = useContext(AppContext);
+  
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -40,14 +48,33 @@ export default function TemporaryDrawer({
     },
   }));
 
-  const list = () => (
-    <Box
-      sx={{ width: "40vw" }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
+  return (
+    <div>
+      <IconButton aria-label="cart">
+        <StyledBadge
+          badgeContent={addToCardItem}
+          color="success"
+          onClick={toggleDrawer(true)}
+        >
+          <ShoppingCartIcon />
+        </StyledBadge>
+        <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
+          <Box
+            sx={{ width: "40vw" }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+          >
+            {cartItems.map((cartItem) => <CartItem cartItem={cartItem}/>)}
+          </Box>
+        </Drawer>
+      </IconButton>
+    </div>
+  );
+}
+
+{
+  /* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -56,24 +83,5 @@ export default function TemporaryDrawer({
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
-    </Box>
-  );
-
-  return (
-    <div>
-      <IconButton aria-label="cart">
-        <StyledBadge
-          badgeContent={addToCardItem}
-          color="default"
-          onClick={toggleDrawer(true)}
-        >
-          <ShoppingCartIcon />
-        </StyledBadge>
-        <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
-          {list()}
-        </Drawer>
-      </IconButton>
-    </div>
-  );
+        </List> */
 }

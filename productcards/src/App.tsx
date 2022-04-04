@@ -9,7 +9,10 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider value={initialState}>
+    <AppContext.Provider value={{
+      ...state,
+      dispatch,
+    }}>
       <div className="App">
         <Main />
       </div>
