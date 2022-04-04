@@ -7,7 +7,7 @@ export const ADD_TO_CART = (payload: TCard) => ({
 });
 
 // Удаление
-export const REMOVE_FROM_CART = (payload: number) => ({
+export const REMOVE_FROM_CART = (payload: string) => ({
     type: 'REMOVE_FROM_CART',
     payload,
 });

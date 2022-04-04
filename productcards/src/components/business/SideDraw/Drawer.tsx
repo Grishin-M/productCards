@@ -1,52 +1,40 @@
-import React, {
-  useState,
-  ReactElement,
-  useContext
-} from "react";
+import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import CartItem from "../CartItem/";
 import { AppContext } from "../../../contexts";
+import { DrawerProps } from "./types";
 
-interface Props {
-  addToCardItem: number;
-}
-export default function TemporaryDrawer({
-  addToCardItem,
-}: Props): ReactElement<Props> {
-  const [state, setState] = useState(false);
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
+
+export default function TemporaryDrawer({ addToCardItem }: DrawerProps) {
+  const [open, setOpen] = useState(false);
   const { cartItems } = useContext(AppContext);
-  
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setState(open);
-    };
 
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  }));
+  // const toggleDrawer =
+    // (open: boolean) => (event: React.KeyboardEvent) => {
+    //   if (
+    //     event.type === "keydown" &&
+    //     ((event as React.KeyboardEvent).key === "Tab" ||
+    //       (event as React.KeyboardEvent).key === "Shift")
+    //   ) {
+    //     return;
+    //   }
+    //   setState(open);
+    // };
+
+  const onToggle = (val: boolean) => setOpen(val);
 
   return (
     <div>
@@ -54,16 +42,16 @@ export default function TemporaryDrawer({
         <StyledBadge
           badgeContent={addToCardItem}
           color="success"
-          onClick={toggleDrawer(true)}
+          onClick={() => onToggle(true)}
         >
           <ShoppingCartIcon />
         </StyledBadge>
-        <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
+        <Drawer anchor="right" open={open} onClose={() => onToggle(false)}>
           <Box
             sx={{ width: "40vw" }}
             role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
+            // onClick={toggleDrawer(false)}
+            // onKeyDown={toggleDrawer(false)}
           >
             {cartItems.map((cartItem) => <CartItem cartItem={cartItem}/>)}
           </Box>
@@ -71,17 +59,4 @@ export default function TemporaryDrawer({
       </IconButton>
     </div>
   );
-}
-
-{
-  /* <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-        </List> */
 }

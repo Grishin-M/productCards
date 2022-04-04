@@ -1,11 +1,39 @@
-import React from 'react'
-import { CartProps } from './types';
+import { useContext } from "react";
+import { CartProps } from "./types";
+import { Button } from "@mui/material";
+import { AppContext } from "../../../contexts";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../../../store/actions";
+import './styles.css';
 
 const CartItem = ({ cartItem }: CartProps) => {
-    console.log(cartItem, '=> cart item')
+  const { dispatch } = useContext(AppContext);
   return (
-    <div>{cartItem.shoe}</div>
-  )
+    <div>
+      <div className="cart_item_information">
+        <p>Price: ${cartItem.title}</p>
+        <p>Total: ${(cartItem.quantity * cartItem.retailPrice).toFixed(2)}</p>
+      </div>
+      <div className="cart_item_buttons">
+        <Button
+          size="small"
+          disableElevation
+          variant="contained"
+          onClick={() => dispatch(REMOVE_FROM_CART(cartItem.id))}
+        >
+          -
+        </Button>
+        <p>{cartItem.quantity}</p>
+        <Button
+          size="small"
+          disableElevation
+          variant="contained"
+          onClick={() => dispatch(ADD_TO_CART(cartItem))}
+        >
+          +
+        </Button>
+      </div>
+    </div>
+  );
 };
 
-export default CartItem
+export default CartItem;

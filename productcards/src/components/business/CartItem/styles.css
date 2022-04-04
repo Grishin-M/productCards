@@ -1,0 +1,5 @@
+.cart_item_information, .cart_item_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
