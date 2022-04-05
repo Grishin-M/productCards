@@ -2,20 +2,20 @@ import { Dispatch } from "react";
 import { CartItem } from "../components/business/CartItem/types";
 
 export type InitialAppState = {
-    cards: Array<string>,
-    loading: boolean,
-    error: string,
-    pagination: Pagination
-    cartItems: CartItem[] | []
-    dispatch: Dispatch<AppAction>;
-}
+  cards: Array<string>;
+  loading: boolean;
+  error: string;
+  pagination: Pagination;
+  cartItems: CartItem[]; // было CartItem[] | [] и ругалось на reduce
+  dispatch: Dispatch<AppAction>;
+};
 
 type Pagination = {
-    page: number;
-    size: number;
-}
+  page: number;
+  size: number;
+};
 
 export type AppAction = {
-    type: string;
-    payload: any;
-}
+  type: string;
+  payload: any;
+};

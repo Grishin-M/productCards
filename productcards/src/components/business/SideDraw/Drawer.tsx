@@ -7,7 +7,6 @@ import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import CartItem from "../CartItem/";
 import { AppContext } from "../../../contexts";
-import { DrawerProps } from "./types";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -18,43 +17,44 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   },
 }));
 
-export default function TemporaryDrawer({ addToCardItem }: DrawerProps) {
+export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
   const { cartItems } = useContext(AppContext);
 
-  // const toggleDrawer =
-    // (open: boolean) => (event: React.KeyboardEvent) => {
-    //   if (
-    //     event.type === "keydown" &&
-    //     ((event as React.KeyboardEvent).key === "Tab" ||
-    //       (event as React.KeyboardEvent).key === "Shift")
-    //   ) {
-    //     return;
-    //   }
-    //   setState(open);
-    // };
-
   const onToggle = (val: boolean) => setOpen(val);
+  const totalPrice = cartItems.reduce(
+    (sum: number, cartItem: { quantity: number; retailPrice: number }) => {
+      return sum + cartItem.quantity * cartItem.retailPrice;
+    },
+    0
+  );
+  const totalPcsInCart = cartItems.reduce(
+    (sum: number, cartItem: { quantity: number }) => {
+      return sum + cartItem.quantity;
+    },
+    0
+  );
 
   return (
     <div>
       <IconButton aria-label="cart">
         <StyledBadge
-          badgeContent={addToCardItem}
-          color="success"
+          badgeContent={totalPcsInCart}
+          color="default"
           onClick={() => onToggle(true)}
         >
           <ShoppingCartIcon />
         </StyledBadge>
         <Drawer anchor="right" open={open} onClose={() => onToggle(false)}>
-          <Box
-            sx={{ width: "40vw" }}
-            role="presentation"
-            // onClick={toggleDrawer(false)}
-            // onKeyDown={toggleDrawer(false)}
-          >
-            {cartItems.map((cartItem) => <CartItem cartItem={cartItem}/>)}
+          <Box sx={{ width: "40vw" }} role="presentation">
+            <h2 className="CartH2">Your cart</h2>
+            {cartItems.map((cartItem) => (
+              <CartItem cartItem={cartItem} />
+            ))}
           </Box>
+          <div className="total_cart">
+            <h3>Total: $ {totalPrice}</h3>
+          </div>
         </Drawer>
       </IconButton>
     </div>

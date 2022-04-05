@@ -5,7 +5,7 @@ import Input from "./components/common/Input/input";
 import { SHOES_PER_PAGE } from "../src/consts/index";
 import { Box, CircularProgress } from "@mui/material";
 import CustomizedDialogs from "./components/business/Popup/Popup";
-import TemporaryDrawer from './components/business/SideDraw/Drawer';
+import TemporaryDrawer from "./components/business/SideDraw/Drawer";
 import { TCard } from "./components/business/Card/types";
 
 export default function Main() {
@@ -58,11 +58,8 @@ export default function Main() {
   return (
     <div className="Main">
       <div className="main_wrapper">
-        <Input
-          filterValue={filterValue}
-          onChange={handleChange}
-        />
-        <TemporaryDrawer addToCardItem={2} />
+        <Input filterValue={filterValue} onChange={handleChange} />
+        <TemporaryDrawer />
       </div>
       {cards.length ? (
         <Cards
