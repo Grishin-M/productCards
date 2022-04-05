@@ -1,12 +1,12 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { CartProps } from "./types";
 import { Button } from "@mui/material";
-import { AppContext } from "../../../contexts";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../../../store/actions";
+// import { AppContext } from "../../../contexts";
+// import { ADD_TO_CART, REMOVE_FROM_CART } from "../../../store/actions";
 import "./styles.css";
 
 const CartItem = ({ cartItem }: CartProps) => {
-  const { dispatch } = useContext(AppContext);
+  // const { dispatch } = useContext(AppContext);
   return (
     <div className="cart_items">
       <div className="cart_item_information">
@@ -28,7 +28,7 @@ const CartItem = ({ cartItem }: CartProps) => {
               disableElevation
               variant="outlined"
               color="error"
-              onClick={() => dispatch(REMOVE_FROM_CART(cartItem.id))}
+              // onClick={() => dispatch(REMOVE_FROM_CART(cartItem.id))}
             >
               -
             </Button>
@@ -41,7 +41,7 @@ const CartItem = ({ cartItem }: CartProps) => {
               disableElevation
               variant="outlined"
               color="success"
-              onClick={() => dispatch(ADD_TO_CART(cartItem))}
+              // onClick={() => dispatch(ADD_TO_CART(cartItem))}
             >
               +
             </Button>

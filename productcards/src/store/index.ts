@@ -1,4 +1,4 @@
-import { addHelper, removeHelper } from "./helper";
+import { addHelper, passInfoToPopup, removeHelper } from "./helper";
 import { AppAction, InitialAppState } from "./types";
 
 // редюсер
@@ -13,6 +13,11 @@ export const reducer = (state: InitialAppState, action: AppAction) => {
       return {
         ...state,
         cartItems: removeHelper(state.cartItems, action.payload),
+      };
+    case "PASS_TO_POPUP":
+      return {
+        ...state,
+        popupItems: passInfoToPopup(state.popupItems, action.payload),
       };
     default:
       return state;

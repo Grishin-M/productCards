@@ -1,14 +1,15 @@
-import { InitialAppState } from './types'
-
+import { InitialAppState } from "./types";
 
 export const initialState: InitialAppState = {
-    cards: ['1','2'],
-    loading: false,
-    error: '',
-    pagination: {
-        page: 1,
-        size: 10
-    },
-    cartItems: [],
-    dispatch: () => {},
+  // cards: ["1", "2"],
+  // loading: false,
+  // error: "",
+  // pagination: {
+  //   page: 1,
+  //   size: 10,
+  // },
+  cartItems: [],
+  popupItems: [],
+  onOpenPopup: false,
+  dispatch: () => {},
 };

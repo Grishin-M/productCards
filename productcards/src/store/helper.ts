@@ -1,4 +1,5 @@
 import { CartItem } from "../components/business/CartItem/types";
+import { PopupItem } from "../components/business/Popup/types";
 
 /** Функция по добавлению элемента в корзину */
 export const addHelper = (items: CartItem[], current: CartItem) => {
@@ -13,7 +14,7 @@ export const addHelper = (items: CartItem[], current: CartItem) => {
 
 /** Функция по удалению элемента из корзины */
 export const removeHelper = (items: CartItem[], id: string) => {
-  return items.reduce((newItems: CartItem[] , currItem: CartItem) => {
+  return items.reduce((newItems: CartItem[], currItem: CartItem) => {
     if (currItem.id === id) {
       if (currItem.quantity === 1) return newItems;
       return [...newItems, { ...currItem, quantity: currItem.quantity - 1 }];
@@ -21,4 +22,10 @@ export const removeHelper = (items: CartItem[], id: string) => {
       return [...newItems, currItem];
     }
   }, []);
+};
+
+export const passInfoToPopup = (items: PopupItem[], current: PopupItem) => {
+  return items.map((el) => {
+    return el.title;
+  });
 };

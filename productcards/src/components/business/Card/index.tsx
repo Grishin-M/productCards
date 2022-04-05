@@ -1,11 +1,16 @@
-import { useContext } from 'react';
-import { AppContext } from '../../../contexts';
-import { ADD_TO_CART } from '../../../store/actions';
-import { CardProps } from './types';
+import { useContext } from "react";
+import { AppContext } from "../../../contexts";
+import { ADD_TO_CART, PASS_TO_POPUP } from "../../../store/actions";
+import { CardProps } from "./types";
 
-function Card({ card, onOpenPopup }: CardProps) {
+function Card({ card, letsOpenPopup }: CardProps) {
   const { dispatch } = useContext(AppContext);
-  const { id, media: { imageUrl }, shoe, retailPrice } = card
+  const {
+    id,
+    media: { imageUrl },
+    shoe,
+    retailPrice,
+  } = card;
   return (
     <div id={id} className="product-card">
       <div className="cards-image">
@@ -13,7 +18,8 @@ function Card({ card, onOpenPopup }: CardProps) {
           src={imageUrl}
           className="product-img"
           alt="product-img"
-          onClick={onOpenPopup}
+          onClick={letsOpenPopup}
+          onChange={() => dispatch({ type: "PASS_TO_POPUP", payload: card })}
         />
       </div>
       <div className="card-content">

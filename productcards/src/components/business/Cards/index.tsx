@@ -2,18 +2,12 @@ import Card from "../Card";
 import { TCard } from "../Card/types";
 import { CardsProps } from "./types";
 
-function Cards({ cards, letsOpenPopup}: CardsProps ) {
+function Cards({ cards, letsOpenPopup }: CardsProps) {
   return (
     <div className="cards">
-      {cards.map(
-        (card: TCard) => (
-          <Card
-            key={card.id}
-            card={card}
-            onOpenPopup={letsOpenPopup}
-          />
-        )
-      )}
+      {cards.map((card: TCard) => (
+        <Card key={card.id} card={card} letsOpenPopup={letsOpenPopup} />
+      ))}
     </div>
   );
 }
