@@ -24,8 +24,6 @@ export const removeHelper = (items: CartItem[], id: string) => {
   }, []);
 };
 
-export const passInfoToPopup = (items: PopupItem[], current: PopupItem) => {
-  return items.map((el) => {
-    return el.title;
-  });
+export const passInfoToPopup = (items: PopupItem[], current: CartItem) => {
+  return [...items, { ...current }];
 };

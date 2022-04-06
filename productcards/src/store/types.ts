@@ -9,7 +9,6 @@ export type InitialAppState = {
   // pagination: Pagination;
   cartItems: CartItem[]; // было CartItem[] | [] и ругалось на reduce
   popupItems: PopupItem[];
-  onOpenPopup: boolean;
   dispatch: Dispatch<AppAction>;
 };
 

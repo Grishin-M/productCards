@@ -5,30 +5,26 @@ import { CardProps } from "./types";
 
 function Card({ card, letsOpenPopup }: CardProps) {
   const { dispatch } = useContext(AppContext);
-  const {
-    id,
-    media: { imageUrl },
-    shoe,
-    retailPrice,
-  } = card;
   return (
-    <div id={id} className="product-card">
+    <div id={card.id} className="product-card">
       <div className="cards-image">
         <img
-          src={imageUrl}
+          src={card.media.imageUrl}
           className="product-img"
           alt="product-img"
-          onClick={letsOpenPopup}
-          onChange={() => dispatch({ type: "PASS_TO_POPUP", payload: card })}
+          onClick={() => {
+            letsOpenPopup();
+            dispatch(PASS_TO_POPUP(card));
+          }}
         />
       </div>
       <div className="card-content">
-        <p className="card-title">{shoe}</p>
+        <p className="card-title">{card.shoe}</p>
         <div className="AddToCard">
-          {retailPrice === 0 ? (
+          {card.retailPrice === 0 ? (
             <span className="card-title N-A">Out off stock</span>
           ) : (
-            <span className="card-title">{retailPrice}$</span>
+            <span className="card-title">{card.retailPrice}$</span>
           )}
           <button
             className="AddToCard-btn"

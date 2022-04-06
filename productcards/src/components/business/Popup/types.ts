@@ -11,7 +11,7 @@ export type PopupItem = {
 };
 
 export type PopupProps = {
-  PopupItem: PopupItem;
+  popupItem: PopupItem;
 };
 
 export type PropsPopup = {

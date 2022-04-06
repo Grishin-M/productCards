@@ -10,6 +10,5 @@ export const initialState: InitialAppState = {
   // },
   cartItems: [],
   popupItems: [],
-  onOpenPopup: false,
   dispatch: () => {},
 };

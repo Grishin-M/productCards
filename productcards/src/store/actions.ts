@@ -12,6 +12,7 @@ export const REMOVE_FROM_CART = (payload: string) => ({
   payload,
 });
 
+// Popup
 export const PASS_TO_POPUP = (payload: TCard) => ({
   type: "PASS_TO_POPUP",
   payload,
