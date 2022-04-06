@@ -19,11 +19,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const CustomizedDialogs = ({ letsClosePopup, openPopup }: PropsPopup) => {
   const { popupItems } = useContext(AppContext);
+  console.log(popupItems);
   return (
     <div>
       <BootstrapDialog
         onClose={() => {
           letsClosePopup();
+          popupItems.pop();
         }}
         aria-labelledby="customized-dialog-title"
         open={openPopup}
