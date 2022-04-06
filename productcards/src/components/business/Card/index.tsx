@@ -19,7 +19,15 @@ function Card({ card, letsOpenPopup }: CardProps) {
         />
       </div>
       <div className="card-content">
-        <p className="card-title">{card.shoe}</p>
+        <p
+          className="card-title"
+          onClick={() => {
+            letsOpenPopup();
+            dispatch(PASS_TO_POPUP(card));
+          }}
+        >
+          {card.shoe}
+        </p>
         <div className="AddToCard">
           {card.retailPrice === 0 ? (
             <span className="card-title N-A">Out off stock</span>

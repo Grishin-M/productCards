@@ -49,7 +49,7 @@ export default function TemporaryDrawer() {
           <Box sx={{ width: "40vw" }} role="presentation">
             <h2 className="CartH2">Your cart</h2>
             {cartItems.map((cartItem) => (
-              <CartItem cartItem={cartItem} />
+              <CartItem cartItem={cartItem} key={cartItem.id} />
             ))}
           </Box>
           <div className="total_cart">

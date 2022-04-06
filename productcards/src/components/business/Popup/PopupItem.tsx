@@ -1,6 +1,5 @@
 import { PopupProps } from "./types";
-import { Button } from "@mui/material";
-import { ADD_TO_CART } from "../../../store/actions";
+import { ADD_TO_CART_FROM_POPUP } from "../../../store/actions";
 import { CardProps } from "../Card/types";
 import { useContext } from "react";
 import { AppContext } from "../../../contexts";
@@ -11,26 +10,25 @@ const PopupItem = ({ popupItem }: PopupProps, { card }: CardProps) => {
     <div className="popup_items">
       <img
         src={popupItem.media.imageUrl}
-        className="product-img"
+        className="popup_items_img"
         alt="product-img"
       />
-      <p>{popupItem.title}</p>
-      <div>
-        <p>Brand: {popupItem.brand}</p>
-        <p>Gender: {popupItem.gender}</p>
-        <p>Release Data: {popupItem.releaseDate}</p>
-      </div>
-      <div>
-        <p>Price: $ {popupItem.retailPrice}</p>
-        <Button
-          size="small"
-          disableElevation
-          variant="outlined"
-          color="success"
-          // onClick={() => dispatch(ADD_TO_CART(card))}
-        >
-          Add to cart
-        </Button>
+      <p className="popup_items_title">{popupItem.title}</p>
+      <div className="popup_items_wrapper">
+        <div className="popup_items_description popup_items_left">
+          <p>Brand: {popupItem.brand}</p>
+          <p>Gender: {popupItem.gender}</p>
+          <p>Release Data: {popupItem.releaseDate}</p>
+        </div>
+        <div className="popup_items_right">
+          <p className="popup_items_price">Price: $ {popupItem.retailPrice}</p>
+          <button
+            className="AddToCard-btn"
+            onClick={() => dispatch(ADD_TO_CART_FROM_POPUP(popupItem))}
+          >
+            Add to Card
+          </button>
+        </div>
       </div>
     </div>
   );

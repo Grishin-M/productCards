@@ -19,7 +19,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const CustomizedDialogs = ({ letsClosePopup, openPopup }: PropsPopup) => {
   const { popupItems } = useContext(AppContext);
-  console.log(popupItems);
   return (
     <div>
       <BootstrapDialog
@@ -33,11 +32,9 @@ const CustomizedDialogs = ({ letsClosePopup, openPopup }: PropsPopup) => {
         <div>
           <DialogContent dividers>
             <div className="popupDescription">
-              <Typography gutterBottom>
-                {popupItems.map((popupItem) => (
-                  <PopupItem popupItem={popupItem} />
-                ))}
-              </Typography>
+              {popupItems.map((popupItem) => (
+                <PopupItem popupItem={popupItem} key={popupItem.id} />
+              ))}
             </div>
           </DialogContent>
         </div>
