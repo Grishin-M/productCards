@@ -6,7 +6,7 @@ export const ADD_TO_CART = (payload: TCard) => ({
   payload,
 });
 
-// Добавление
+// Добавление из popup в cart
 export const ADD_TO_CART_FROM_POPUP = (payload: TCard) => ({
   type: "ADD_TO_CART_FROM_POPUP",
   payload,
@@ -18,7 +18,7 @@ export const REMOVE_FROM_CART = (payload: string) => ({
   payload,
 });
 
-// Popup
+// добавление инфы в Popup
 export const PASS_TO_POPUP = (payload: TCard) => ({
   type: "PASS_TO_POPUP",
   payload,

@@ -27,7 +27,7 @@ export const reducer = (state: InitialAppState, action: AppAction) => {
     case "ADD_TO_CART_FROM_POPUP":
       return {
         ...state,
-        popupItems: addHelperPop(state.popupItems, action.payload),
+        cartItems: addHelperPop(state.cartItems, action.payload),
       };
     default:
       return state;
