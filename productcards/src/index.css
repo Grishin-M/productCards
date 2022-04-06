@@ -1,0 +1,144 @@
+* {
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #fec64f; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.cards-image img {
+  width: 400px;
+}
+.card-content {
+  font-size: 18px;
+}
+.card-content span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.AddToCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.AddToCard-btn {
+  background: #425eab;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0 1.2rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.AddToCard-btn:hover {
+  background: #152e6f;
+  transition-duration: 0.2s;
+}
+.N-A {
+  color: red;
+}
+.pagiSpan {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 25px;
+}
+.css-1to51ap-MuiBadge-root .MuiBadge-badge {
+  right: 0 !important;
+  padding: 0 15px 0 0 !important;
+  width: 80px;
+  height: 50px; 
+  font-weight: bold;
+  font-size: 20px;
+  justify-content: right;
+}
+.css-fvc8ir-MuiBadge-badge {
+  border-radius: 50px !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  z-index: 2;
+}
+.product-img {
+  cursor: pointer;
+}
+.main_wrapper {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: #FEC64F;
+}
+.popup_items_img {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+.popup_items_title {
+font-weight: 700;
+font-size: 1.5em;
+padding: 20px 0;
+border-bottom: 2px solid #000007;
+border-top: 2px solid #000007;
+}
+.popup_items_description {
+  font-weight: 500;
+  font-size: 1em;
+}
+.popup_items_price {
+  font-weight: 700;
+  font-size: 1.7em;
+}
+.popup_items_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.popup_items_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-right:1px solid #000007;
+  width: 50%;
+}
+.popup_items_left p,
+.popup_items_right p {
+  margin: 0;
+  padding: 15px 0;
+}
+.popup_items_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  border-left:1px solid #000007;
+  width: 50%;
+  align-items: center;
+}
+.card-title {
+  cursor: pointer;
+}
