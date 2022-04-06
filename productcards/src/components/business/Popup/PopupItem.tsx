@@ -6,7 +6,6 @@ import { AppContext } from "../../../contexts";
 
 const PopupItem = ({ popupItem }: PopupProps, { card }: CardProps) => {
   const { dispatch } = useContext(AppContext);
-  console.log(popupItem);
   return (
     <div className="popup_items">
       <img

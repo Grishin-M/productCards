@@ -19,7 +19,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const CustomizedDialogs = ({ letsClosePopup, openPopup }: PropsPopup) => {
   const { popupItems } = useContext(AppContext);
-  console.log(popupItems);
   return (
     <div>
       <BootstrapDialog
