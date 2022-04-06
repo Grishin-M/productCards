@@ -18,5 +18,5 @@ export type Media = {
 
 export type CardProps = {
   card: TCard;
-  letsOpenPopup: () => void;
+  letsOpenPopup: (id: string) => void;
 };

@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { CartItem } from "../components/business/CartItem/types";
-import { PopupItem } from "../components/business/Popup/types";
+// import { PopupItem } from "../components/business/Popup/types";
 
 export type InitialAppState = {
   // cards: Array<string>;
@@ -8,7 +8,7 @@ export type InitialAppState = {
   // error: string;
   // pagination: Pagination;
   cartItems: CartItem[]; // было CartItem[] | [] и ругалось на reduce
-  popupItems: PopupItem[];
+  // popupItems: PopupItem[];
   dispatch: Dispatch<AppAction>;
 };
 

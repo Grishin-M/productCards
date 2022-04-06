@@ -1,5 +1,5 @@
 import "./App.css";
-import Main from "./Main";
+import Main from "./Pages/Main/Main";
 import { useReducer } from "react";
 import { initialState } from "./store/state";
 import { reducer } from "./store";

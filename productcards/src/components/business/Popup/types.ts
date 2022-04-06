@@ -1,6 +1,6 @@
 import { Media } from "../Card/types";
 
-export type PopupItem = {
+export type TPopupItem = {
   brand: string;
   colorway: string;
   gender: string;
@@ -16,11 +16,11 @@ export type PopupItem = {
 };
 
 export type PopupProps = {
-  popupItem: PopupItem;
+  popupItem: TPopupItem | null;
 };
 
 export type PropsPopup = {
-  letsOpenPopup: () => void;
   letsClosePopup: () => void;
   openPopup: boolean;
+  currentShoe: TPopupItem | null;
 };

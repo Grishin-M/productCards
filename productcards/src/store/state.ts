@@ -9,6 +9,6 @@ export const initialState: InitialAppState = {
   //   size: 10,
   // },
   cartItems: [],
-  popupItems: [],
+  // popupItems: [],
   dispatch: () => {},
 };

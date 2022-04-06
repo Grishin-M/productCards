@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts";
-import { ADD_TO_CART, PASS_TO_POPUP } from "../../../store/actions";
+import { ADD_TO_CART } from "../../../store/actions";
 import { CardProps } from "./types";
 
 function Card({ card, letsOpenPopup }: CardProps) {
@@ -12,19 +12,13 @@ function Card({ card, letsOpenPopup }: CardProps) {
           src={card.media.imageUrl}
           className="product-img"
           alt="product-img"
-          onClick={() => {
-            letsOpenPopup();
-            dispatch(PASS_TO_POPUP(card));
-          }}
+          onClick={ () => letsOpenPopup(card.id) }
         />
       </div>
       <div className="card-content">
         <p
           className="card-title"
-          onClick={() => {
-            letsOpenPopup();
-            dispatch(PASS_TO_POPUP(card));
-          }}
+          onClick={() => letsOpenPopup(card.id) }
         >
           {card.shoe}
         </p>

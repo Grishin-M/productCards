@@ -1,11 +1,8 @@
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import Typography from "@mui/material/Typography";
 import { PropsPopup } from "../Popup/types";
 import "./popup.css";
-import { useContext } from "react";
-import { AppContext } from "../../../contexts";
 import PopupItem from "./PopupItem";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -17,24 +14,18 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const CustomizedDialogs = ({ letsClosePopup, openPopup }: PropsPopup) => {
-  const { popupItems } = useContext(AppContext);
+const CustomizedDialogs = ({ letsClosePopup, openPopup, currentShoe }: PropsPopup) => {
   return (
     <div>
       <BootstrapDialog
-        onClose={() => {
-          letsClosePopup();
-          popupItems.pop();
-        }}
+        onClose={() => letsClosePopup() }
         aria-labelledby="customized-dialog-title"
         open={openPopup}
       >
         <div>
           <DialogContent dividers>
             <div className="popupDescription">
-              {popupItems.map((popupItem) => (
-                <PopupItem popupItem={popupItem} key={popupItem.id} />
-              ))}
+              <PopupItem popupItem={currentShoe} key={currentShoe?.id} />
             </div>
           </DialogContent>
         </div>
