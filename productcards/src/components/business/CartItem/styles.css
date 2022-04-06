@@ -33,15 +33,11 @@
     padding: 0 20px;
 }
 .cart_item_img{
-    width: 40%;
     padding: 0 10px;
 }
 .cart_item_name{
     width: 60%;
     padding: 0 10px;
-}
-.cart_item_product_img {
-    cursor: pointer;
 }
 .cart_item_product_img:active {
     background-color: red;

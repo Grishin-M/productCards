@@ -15,6 +15,7 @@ const CartItem = ({ cartItem }: CartProps) => {
             src={cartItem.media.imageUrl}
             className="cart_item_product_img"
             alt="product-img"
+            width="200"
           />
           <p>Amount</p>
           <span>$ {(cartItem.quantity * cartItem.retailPrice).toFixed(2)}</span>
