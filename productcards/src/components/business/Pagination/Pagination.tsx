@@ -12,7 +12,7 @@ function Pagination({
   const isDisabledNext = currentPage === totalPages;
   const isDisabledPrev = currentPage === 1;
   return (
-    <div className="cards">
+    <div className="cardsPagination">
       <Button onClick={handleGoPrevPage} isDisabled={isDisabledPrev}>
         Prev
       </Button>

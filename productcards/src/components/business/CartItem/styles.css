@@ -57,3 +57,9 @@
     margin: 0;
     padding-bottom: 5px;
 }
+.cardsPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
